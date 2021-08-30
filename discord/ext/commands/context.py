@@ -42,6 +42,7 @@ if TYPE_CHECKING:
     from discord.state import ConnectionState
     from discord.user import ClientUser, User
     from discord.voice_client import VoiceProtocol
+    from discord.interactions import Interaction
 
     from .bot import Bot, AutoShardedBot
     from .cog import Cog
@@ -96,6 +97,8 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         .. versionadded:: 2.0
     prefix: Optional[:class:`str`]
         The prefix that was used to invoke the command.
+    interaction: Optional[:class:`.Interaction`]
+        The interaction which invoked this command, can either be a slash command or an application command.
     command: Optional[:class:`Command`]
         The command that is being invoked currently.
     invoked_with: Optional[:class:`str`]
@@ -130,6 +133,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         args: List[Any] = MISSING,
         kwargs: Dict[str, Any] = MISSING,
         prefix: Optional[str] = None,
+        interaction: Optional[Interaction] = None,
         command: Optional[Command] = None,
         invoked_with: Optional[str] = None,
         invoked_parents: List[str] = MISSING,
@@ -143,6 +147,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         self.args: List[Any] = args or []
         self.kwargs: Dict[str, Any] = kwargs or {}
         self.prefix: Optional[str] = prefix
+        self.interaction: Optional[Interaction] = interaction
         self.command: Optional[Command] = command
         self.view: StringView = view
         self.invoked_with: Optional[str] = invoked_with
