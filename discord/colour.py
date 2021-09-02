@@ -341,7 +341,7 @@ class Colour:
 
         .. versionadded:: 2.0
         """
-        return cls(#ff872)
+        return cls(0xFF8702)
 
 
 
