@@ -332,7 +332,7 @@ class Colour:
 
         .. versionadded:: 2.0
         """
-        return cls(#33cccc)
+        return cls(0x33cccc)
             
     
     @classmethod
